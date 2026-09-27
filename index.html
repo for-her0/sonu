@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#0e0c0d" />
+<title>For You</title>
+<meta name="description" content="Something I made instead of just saying it." />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&family=Caveat:wght@500;600&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- grain overlay -->
+<div class="grain" aria-hidden="true"></div>
+
+<!-- progress rail -->
+<div class="progress-rail" aria-hidden="true"><div class="progress-fill" id="progressFill"></div></div>
+
+<!-- ============ 00 : ENTRY GATE ============ -->
+<section id="gate" class="gate" aria-label="Opening">
+  <div class="gate-inner">
+    <p class="gate-line" data-line="1">I made something for you.</p>
+    <p class="gate-line" data-line="2">But I'm not sure<br />how you're going to react.</p>
+    <button id="enterBtn" class="gate-enter" data-line="3">
+      <span>Enter</span>
+    </button>
+  </div>
+</section>
+
+<main id="story" class="story" hidden>
+
+  <!-- ============ 01 : HER ============ -->
+  <section class="panel her-panel" data-section>
+    <div class="her-media">
+      <img id="heroImg" class="her-image reveal-img" src="assets/images/hero.jpg" alt="A photo of her" loading="eager" />
+      <div class="her-media-veil"></div>
+    </div>
+    <div class="her-copy">
+      <h1 class="her-name reveal-up"><span id="herNameDisplay">Her</span>.</h1>
+      <p class="her-line reveal-up" style="--d:1">I don't really know when</p>
+      <p class="her-line reveal-up" style="--d:2">I started noticing you.</p>
+      <p class="her-line her-line-soft reveal-up" style="--d:3">I just know that I eventually did.</p>
+    </div>
+    <div class="scroll-hint reveal-up" style="--d:4"><span>scroll</span><i></i></div>
+  </section>
+
+  <!-- ============ 02 : WHEN I FIRST NOTICED YOU ============ -->
+  <section class="panel noticed-panel" data-section>
+    <header class="panel-head">
+      <p class="eyebrow reveal-up">a beginning, of sorts</p>
+    
+    </header>
+    <div id="momentsTrack" class="moments-track"><!-- injected by JS --></div>
+  </section>
+
+  <!-- ============ 03 : THE LITTLE THINGS ============ -->
+  <section class="panel little-panel" data-section>
+    <header class="panel-head panel-head--dark">
+      <h2 class="panel-title reveal-up">The little things.</h2>
+      <p class="panel-sub reveal-up" style="--d:1">Things you probably don't realize I notice.</p>
+    </header>
+    <ul id="observationsList" class="observations-list"><!-- injected by JS --></ul>
+  </section>
+
+  <!-- ============ 04 : PHOTO STORY ============ -->
+  <section class="panel gallery-panel" data-section>
+    <header class="panel-head">
+      <p class="eyebrow reveal-up">a few frames</p>
+      <h2 class="panel-title reveal-up">Moments, captured.</h2>
+    </header>
+    <div id="galleryGrid" class="gallery-grid"><!-- injected by JS --></div>
+  </section>
+
+  <!-- ============ 05 : MOMENTS I REMEMBER ============ -->
+  <section class="panel remember-panel" data-section>
+    <header class="panel-head panel-head--dark">
+      <p class="eyebrow reveal-up">nothing dramatic. just true.</p>
+      <h2 class="panel-title reveal-up">Moments I remember.</h2>
+    </header>
+    <div id="rememberTrack" class="remember-track"><!-- injected by JS --></div>
+  </section>
+
+  <!-- ============ 06 : THINGS I LIKE ABOUT YOU ============ -->
+  <section class="panel reasons-panel" data-section>
+    <header class="panel-head">
+      <h2 class="panel-title reveal-up">Things I like<br />about you.</h2>
+    </header>
+    <ol id="reasonsList" class="reasons-list"><!-- injected by JS --></ol>
+  </section>
+
+  <!-- ============ 07 : THINGS I'VE NEVER SAID ============ -->
+  <section class="panel suspense-panel" data-section>
+    <div class="suspense-inner">
+      <p class="suspense-line reveal-up">There are a few things<br />I've never told you.</p>
+      <p class="suspense-line suspense-line-soft reveal-up" style="--d:1">I've wanted to.</p>
+      <p class="suspense-line suspense-line-soft reveal-up" style="--d:2">I just never really knew how.</p>
+      <p class="suspense-line suspense-line-final reveal-up" style="--d:3">So&hellip; I made this instead.</p>
+    </div>
+  </section>
+
+  <!-- ============ 08 : THE CONFESSION ============ -->
+  <section class="panel confession-panel" data-section>
+    <div class="confession-lead">
+      <p class="confession-pre reveal-up">Okay.</p>
+      <p class="confession-pre reveal-up" style="--d:1">I think you probably know<br />where this is going.</p>
+      <p class="confession-pre confession-pre-soft reveal-up" style="--d:2">But I'll say it anyway.</p>
+    </div>
+
+    <div class="letter-wrap">
+      <button id="openLetterBtn" class="letter-seal">
+        <span>Open</span>
+      </button>
+      <article id="letter" class="letter" hidden>
+        <p class="letter-greeting">Dear <span id="letterHerName">Her</span>,</p>
+        <div id="letterBody" class="letter-body"><!-- injected by JS --></div>
+        <p class="letter-closing" id="letterClosing">&mdash; Me</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ 09 : ONE LAST THING ============ -->
+  <section class="panel last-panel" data-section>
+    <div class="last-stage" id="lastStage">
+      <p class="last-line reveal-up">Wait.</p>
+      <p class="last-line last-line-soft reveal-up" style="--d:1">There's one more thing.</p>
+      <button id="lastThingBtn" class="last-btn reveal-up" style="--d:2">One last thing</button>
+    </div>
+
+    <div class="last-reveal" id="lastReveal" hidden>
+      <img id="lastImg" class="last-image" src="assets/images/hero.jpg" alt="Her, one more time" loading="lazy" />
+      <div class="last-text">
+        <p class="last-final-line">If this made you smile&hellip;</p>
+        <p class="last-final-line">then honestly, it was worth making.</p>
+        <p class="last-final-line last-final-gap">And if you ever wondered&hellip;</p>
+        <p class="last-final-line">yes.</p>
+        <p class="last-final-line">I made this because I really, really like you.</p>
+        <p class="last-heart">&#10084;</p>
+        <p class="last-sign" id="lastSign">&mdash; Me</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 10 : FINAL CHOICE ============ -->
+  <section class="panel choice-panel" data-section>
+    <p class="choice-q reveal-up">So&hellip; what do you think?</p>
+    <div class="choice-buttons reveal-up" style="--d:1">
+      <button class="choice-btn" id="choiceCute" type="button">That was cute</button>
+      <button class="choice-btn choice-btn--primary" id="choiceSay" type="button">I have something to say</button>
+    </div>
+    <p class="choice-response" id="choiceResponse" aria-live="polite"></p>
+    <footer class="story-footer">
+      <p>made with more nerves than I'd like to admit.</p>
+    </footer>
+  </section>
+
+</main>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox" hidden>
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close photo">&times;</button>
+  <img id="lightboxImg" src="" alt="" />
+  <p id="lightboxCaption" class="lightbox-caption"></p>
+</div>
+
+<!-- Music player -->
+<div class="music-player" id="musicPlayer" hidden>
+  <button class="music-toggle" id="musicToggle" aria-label="Play song">
+    <span class="music-icon" id="musicIcon">&#9658;</span>
+  </button>
+  <span class="music-label" id="musicLabel">Our song</span>
+  <audio id="musicAudio" preload="none" loop></audio>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
